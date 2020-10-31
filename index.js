@@ -11,7 +11,7 @@ app.use(body_parser.json({ limit: '5mb', extended: true }));
 var direccionamiento = 1
 
 var maquinalocal= "1493ba5945eb.ngrok.io";
-var maquinanube= "3.80.201.217:3000";
+var maquinanube= "google";
 
 app.get('/', (req, res) => {
   res.send('Balanceador!')
