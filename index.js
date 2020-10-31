@@ -1,16 +1,36 @@
+const express = require('express')
+var body_parser = require('body-parser');
 
-var express = require('express');
 
-var app = express();
+const app = express()
+const port = 3000
+app.use(body_parser.json({ limit: '5mb', extended: true }));
 
-app.get('/', function (req, res) {
-  res.send('Este es el home');
-  console.log("Página de inicio...")
+
+app.get('/', (req, res) => {
+  res.send('Balanceador!')
 })
+app.post('/login', (req, res) => {
+    console.log(req.body)
+    var user = req.body.user ;
+    var password = req.body.password ;
+    res.send('Login '+user+"   "+password+ " $")
+  })
 
-app.get('/cursos', function (req, res) {
-  res.send('Estos son los cursos');
-  console.log("Página de cursos");
+  app.post('/registro', (req, res) => {
+    var datos = req.body.datos || '';
+    res.send('Registro ' +datos)
+  })
+
+  app.get('/server', (req, res) => {
+    res.send('Servidor')
+  })
+
+  app.get('/funcion', (req, res) => {
+    res.send('Funcion')
+  })
+
+  
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
 })
-
-app.listen(3000);
