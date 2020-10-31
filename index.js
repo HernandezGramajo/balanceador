@@ -10,8 +10,8 @@ app.use(body_parser.json({ limit: '5mb', extended: true }));
 
 var direccionamiento = 1
 
-var maquinalocal= "1493ba5945eb.ngrok.io";
-var maquinanube= "google";
+var maquinalocal= "e2cb60793578.ngrok.io";
+var maquinanube= "13.59.23.156:3000";
 
 app.get('/', (req, res) => {
   res.send('Balanceador!')
@@ -58,7 +58,7 @@ app.post('/login', async (req, res) => {
                 headers: {'Content-Type': 'application/json'}
             });
             const body = await response.json();
-            direccionamiento=0
+            direccionamiento=1
             res.send(body)
         } catch (error) {
             
@@ -69,7 +69,7 @@ app.post('/login', async (req, res) => {
                     headers: {'Content-Type': 'application/json'}
                 });
                 const body = await response.json();
-                direccionamiento=1
+                direccionamiento=0
                 res.send(body)
 
                 
@@ -124,7 +124,7 @@ app.post('/login', async (req, res) => {
                 headers: {'Content-Type': 'application/json'}
             });
             const body = await response.json();
-            direccionamiento=0
+            direccionamiento=1
             res.send(body)
         } catch (error) {
         
@@ -135,7 +135,7 @@ app.post('/login', async (req, res) => {
                     headers: {'Content-Type': 'application/json'}
                 });
                 const body = await response.json();
-                direccionamiento=1
+                direccionamiento=0
                 res.send(body)
 
                 
@@ -175,14 +175,14 @@ app.post('/login', async (req, res) => {
         try {
             const response = await fetch("http://"+maquinanube+"/server");
             const body = await response.json();
-            direccionamiento=0
+            direccionamiento=1
             res.send(body)
         } catch (error) {
         
             try {
                 const response = await fetch("http://"+maquinalocal+"/server");
                 const body = await response.json();
-                direccionamiento=1
+                direccionamiento=0
                 res.send(body)
 
                 
@@ -224,14 +224,14 @@ app.post('/login', async (req, res) => {
         try {
             const response = await fetch("http://"+maquinanube+"/funcion");
             const body = await response.json();
-            direccionamiento=0
+            direccionamiento=1
             res.send(body)
         } catch (error) {
         
             try {
                 const response = await fetch("http://"+maquinalocal+"/funcion");
                 const body = await response.json();
-                direccionamiento=1
+                direccionamiento=0
                 res.send(body)
 
                 
